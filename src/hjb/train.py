@@ -21,8 +21,8 @@ import wandb
 
 def train(rank, world_size, config):
   cfg = config.hjb
-
-  wandb.init(name="pytorch-HJB-250", project="jax-pinn", config=dict(cfg))
+  x_dim = cfg['equation']['x_dim']
+  wandb.init(name=f"pytorch-HJB-{x_dim}", project="jax-pinn", config=dict(cfg))
 
   setup(rank, world_size)
   logger = setup_logging()
